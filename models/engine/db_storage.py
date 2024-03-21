@@ -18,7 +18,7 @@ from models.user import User
 
 class DBStorage:
     """
-    
+
     """
     __engine = None
     __session = None
@@ -38,7 +38,7 @@ class DBStorage:
 
     def all(self, cls=None):
         """
-        
+
         """
         objs_list = []
         if cls:
@@ -57,31 +57,31 @@ class DBStorage:
             key = "{}.{}".format(obj.__class__.__name__, obj.id)
             obj_dict[key] = obj
         return obj_dict
-    
+
     def new(self, obj):
         """
-        
+
         """
         self.__session.add(obj)
         self.__session.commit()
 
     def save(self):
         """"
-        
-        """
-        self.__session.commit()    
 
-                
+        """
+        self.__session.commit()
+
+
     def delete(self, obj=None):
         """
-        
+
         """
         if obj:
             self.__session.delete(obj)
 
     def reload(self):
         """
-        
+
         """
         Base.metadata.drop_all(self.__engine)
         Base.metadata.create_all(self.__engine)
